@@ -12,7 +12,7 @@ using namespace std;
 
 /* Global variables */
 #define humanFrameID "human_detected"
-#define fixedFrameID "camera_link"
+#define fixedFrameID "kinect2_link"
 
 ros::Publisher marker_pub;
 ros::Subscriber pose_sub;
@@ -44,7 +44,7 @@ void dpsCallback(const geometry_msgs::PoseStamped& pose_msg) {
   float front = back + alpha*Velocity*Time;
 
   float a = (front + back)/(2);
-  float b = side; /*revisar esto*/
+  float b = side;
   float c = (front - back)/(2);
   
   marker.scale.x = a/2;
@@ -68,7 +68,7 @@ void dpsCallback(const geometry_msgs::PoseStamped& pose_msg) {
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "Human_dection");
+  ros::init(argc, argv, "human_dection");
   ros::NodeHandle nh;
 
   pose_sub = nh.subscribe("human/position", 1000, dpsCallback);
