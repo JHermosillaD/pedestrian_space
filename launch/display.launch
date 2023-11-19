@@ -1,0 +1,4 @@
+<launch>
+  <param name="/position_topic" type="string" value="/pedestrian/position" />
+  <node name="PedestrianSpace" pkg="pedestrian_space" type="display_marker" output="screen"/>
+</launch>

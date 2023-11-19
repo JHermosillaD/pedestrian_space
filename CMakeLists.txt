@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(dps)
+project(pedestrian_space)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -8,25 +8,16 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
 )
 
-###################################
-## catkin specific configuration ##
-###################################
-
 catkin_package(
   CATKIN_DEPENDS roscpp std_msgs
 )
 
-###########
-## Build ##
-###########
-
 include_directories(
-# include
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(marker_node src/main.cpp)
+add_executable(display_marker src/main.cpp)
 
-target_link_libraries(marker_node
+target_link_libraries(display_marker
   ${catkin_LIBRARIES} ${LIBS}
 )
