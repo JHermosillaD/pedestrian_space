@@ -10,9 +10,7 @@
 using namespace std;
 
 string position_topic;
-
-#define humanFrameID "human_detected"
-#define fixedFrameID "base_link"
+string fixedFrameID;
 
 class PedestrianSpace {
 
@@ -25,6 +23,7 @@ public:
     pose_sub_ = nh_.subscribe(position_topic, 1000, &PedestrianSpace::poseCallback, this);
     marker_pub_ = nh_.advertise<visualization_msgs::Marker>("/pedestrian/marker", 1);
   }
+  
   void poseCallback(const geometry_msgs::PoseStamped& pose_msg) {
     ros::Time rosTime = ros::Time::now();
     visualization_msgs::Marker marker;
@@ -69,7 +68,9 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "pedestrian_space");
   ros::NodeHandle nh;
   nh.getParam("/position_topic", position_topic);
+  nh.getParam("/fixedFrameID", fixedFrameID);
   PedestrianSpace ic; 
   ros::spin ();
   return 0;
 }
+
