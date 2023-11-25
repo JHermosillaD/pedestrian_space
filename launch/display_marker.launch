@@ -1,4 +1,5 @@
 <launch>
   <param name="/position_topic" type="string" value="/pedestrian/position" />
+  <param name="/fixedFrameID" type="string" value="base_link" />
   <node name="PedestrianSpace" pkg="pedestrian_space" type="display_marker" output="screen"/>
 </launch>
